@@ -80,22 +80,20 @@ router.post('/article/:id/comment', async (req: Request, res: Response) => {
       article: id
   })
 
-    data.save(async (err, comment) => {
-      const result = await Article.findByIdAndUpdate(
+    const comment = await data.save();
+    const result = await Article.findByIdAndUpdate(
         { _id: id }, 
         { $push: { 
-            comments: comment._id
-          }
+          comments: comment._id
+        }
         }, options
-      )
-  
-      res.send(result)
-    });
+    )
+    res.send(result)   
   }
   catch(error){
     res.status(500).json({message: error})
   }
-})
+  })
 
 router.get('/article/:id/comment', async (req: Request, res: Response) => {
   try{

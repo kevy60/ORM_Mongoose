@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
-import articleController from "./controllers/articleContoller";
+import articleController from "./controllers/articleController";
 import commentController from "./controllers/commentController";
 import bodyParser from 'body-parser';
 
